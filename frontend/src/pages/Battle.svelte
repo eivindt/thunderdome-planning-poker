@@ -30,6 +30,7 @@
         description: '',
         acceptanceCriteria: '',
     }
+    const pathPrefix = appConfig.PathPrefix
 
     let socketError = false
     let socketReconnecting = false
@@ -191,7 +192,7 @@
     }
 
     const ws = new Sockette(
-        `${socketExtension}://${window.location.host}/api/arena/${battleId}`,
+        `${socketExtension}://${window.location.host}${pathPrefix}/api/arena/${battleId}`,
         {
             timeout: 2e3,
             maxAttempts: 15,
@@ -491,7 +492,7 @@
                 </div>
 
                 <div class="bg-white shadow-lg p-4 mb-4 rounded">
-                    <InviteWarrior {hostname} battleId="{battle.id}" />
+                    <InviteWarrior {hostname} battleId="{battle.id}" pathPrefix="{pathPrefix}" />
                     {#if battle.leaderId === $warrior.id}
                         <div class="mt-4 text-right">
                             <HollowButton color="red" onClick="{concedeBattle}">

@@ -4,6 +4,7 @@
 
     export let hostname = ''
     export let battleId = ''
+    export let pathPrefix = ''
 
     function copyBattleLink() {
         const battleLink = document.getElementById('BattleLink')
@@ -23,7 +24,7 @@
         appearance-none text-gray-700 focus:outline-none focus:bg-white
         focus:border-purple-500 "
         type="text"
-        value="{hostname}/battle/{battleId}"
+        value="{hostname}{pathPrefix}/battle/{battleId}"
         id="BattleLink"
         readonly />
     <div class="flex -mr-px">

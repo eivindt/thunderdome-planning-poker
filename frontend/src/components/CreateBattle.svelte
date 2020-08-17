@@ -14,6 +14,7 @@
 
     const allowedPointValues = appConfig.AllowedPointValues
     const allowJiraImport = appConfig.AllowJiraImport
+    const pathPrefix = appConfig.PathPrefix
 
     let points = appConfig.DefaultPointValues
     let battleName = ''
@@ -67,7 +68,7 @@
             plans,
         }
 
-        xfetch('/api/battle', { body })
+        xfetch(`${pathPrefix}/api/battle`, { body })
             .then(res => res.json())
             .then(function(battle) {
                 eventTag('create_battle', 'engagement', 'success', () => {

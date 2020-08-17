@@ -50,7 +50,9 @@
         params: {},
     }
 
-    const router = Navaid('/')
+    const pathPrefix = appConfig.PathPrefix
+
+    const router = Navaid(`${pathPrefix}/`)
         .on('/', () => {
             currentPage = {
                 route: Landing,
@@ -117,7 +119,7 @@
     }
 
     function logoutWarrior() {
-        xfetch('/api/auth/logout', { method: 'POST' })
+        xfetch(`${pathPrefix}/api/auth/logout`, { method: 'POST' })
             .then(function() {
                 eventTag('logout', 'engagement', 'success', () => {
                     warrior.delete()
@@ -153,19 +155,19 @@
         role="navigation"
         aria-label="main navigation">
         <div class="flex items-center flex-shrink-0 mr-6">
-            <a href="/">
-                <img src="/img/logo.svg" alt="Thunderdome" class="nav-logo" />
+            <a href="${pathPrefix}/">
+                <img src="${pathPrefix}/img/logo.svg" alt="Thunderdome" class="nav-logo" />
             </a>
         </div>
         <div class="text-right mt-4 md:mt-0">
             {#if activeWarrior.name}
                 <span class="font-bold mr-2 text-xl">
                     <WarriorIcon />
-                    <a href="/warrior-profile">{activeWarrior.name}</a>
+                    <a href="${pathPrefix}/warrior-profile">{activeWarrior.name}</a>
                 </span>
                 <HollowButton
                     color="teal"
-                    href="/battles"
+                    href="${pathPrefix}/battles"
                     additionalClasses="mr-2">
                     {$_('pages.myBattles.nav')}
                 </HollowButton>
@@ -173,19 +175,19 @@
                     {#if registrationAllowed}
                         <HollowButton
                             color="teal"
-                            href="/enlist"
+                            href="${pathPrefix}/enlist"
                             additionalClasses="mr-2">
                             {$_('pages.createAccount.nav')}
                         </HollowButton>
                     {/if}
-                    <HollowButton href="/login">
+                    <HollowButton href="${pathPrefix}/login">
                         {$_('pages.login')}
                     </HollowButton>
                 {:else}
                     {#if activeWarrior.rank === 'GENERAL'}
                         <HollowButton
                             color="purple"
-                            href="/admin"
+                            href="${pathPrefix}/admin"
                             additionalClasses="mr-2">
                             {$_('pages.admin.nav')}
                         </HollowButton>
@@ -198,12 +200,12 @@
                 {#if registrationAllowed}
                     <HollowButton
                         color="teal"
-                        href="/enlist"
+                        href="${pathPrefix}/enlist"
                         additionalClasses="mr-2">
                         {$_('pages.createAccount.nav')}
                     </HollowButton>
                 {/if}
-                <HollowButton href="/login">
+                <HollowButton href="${pathPrefix}/login">
                     {$_('pages.login.nav')}
                 </HollowButton>
             {/if}

@@ -171,6 +171,7 @@ func (s *server) handleIndex() http.HandlerFunc {
 		AllowJiraImport    bool
 		DefaultLocale      string
 		FriendlyUIVerbs    bool
+		PathPrefix              string
 	}
 	type UIConfig struct {
 		AnalyticsEnabled bool
@@ -209,6 +210,7 @@ func (s *server) handleIndex() http.HandlerFunc {
 		AllowJiraImport:    viper.GetBool("config.allow_jira_import"),
 		DefaultLocale:      viper.GetString("config.default_locale"),
 		FriendlyUIVerbs:    viper.GetBool("config.friendly_ui_verbs"),
+		PathPrefix:         viper.GetString("http.path_prefix"),
 	}
 
 	data := UIConfig{
