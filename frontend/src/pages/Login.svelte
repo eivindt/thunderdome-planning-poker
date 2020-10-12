@@ -17,6 +17,7 @@
     let forgotPassword = false
 
     const pathPrefix = appConfig.PathPrefix
+    const allowResetPassword = (appConfig.AuthMethod === "normal")
 
     $: targetPage = battleId ? `/battle/${battleId}` : '/battles'
 
@@ -135,7 +136,7 @@
                     </div>
 
                     <div class="text-right">
-                        {#if appConfig.AuthMethod === 'normal'}			
+                        {#if allowResetPassword}			
                         <button
                             type="button"
                             class="inline-block align-baseline font-bold text-sm
