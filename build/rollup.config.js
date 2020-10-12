@@ -53,7 +53,8 @@ export default {
             template: 'frontend/public/index.html',
             dest: 'dist',
             filename: 'index.html',
-            absolute: true,
+            onlinePath: '/thunderdome/',
+            absolute: false,
         }),
 
         copy({
@@ -69,6 +70,6 @@ export default {
 
         // If we're building for production (npm run build
         // instead of npm run dev), minify
-        production && terser(),
+        // production && terser(),
     ],
 }

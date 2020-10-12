@@ -19,8 +19,9 @@
     let warriorEmail = ''
     let warriorPassword1 = ''
     let warriorPassword2 = ''
+    const pathPrefix = appConfig.PathPrefix
 
-    $: targetPage = battleId ? `/battle/${battleId}` : '/battles'
+    $: targetPage = pathPrefix + (battleId ? `/battle/${battleId}` : '/battles')
 
     function createWarriorPrivate(e) {
         e.preventDefault()
@@ -37,7 +38,7 @@
         }
 
         if (noFormErrors) {
-            xfetch('/api/warrior', { body })
+            xfetch(`${pathPrefix}/api/warrior`, { body })
                 .then(res => res.json())
                 .then(function(newWarrior) {
                     warrior.create({
@@ -72,7 +73,7 @@
             warriorPassword2,
         }
 
-        xfetch('/api/enlist', { body })
+        xfetch('${pathPrefix}/api/enlist', { body })
             .then(res => res.json())
             .then(function(newWarrior) {
                 warrior.create({
