@@ -14,6 +14,7 @@
 
     let warriorPassword1 = ''
     let warriorPassword2 = ''
+    const pathPrefix = appConfig.PathPrefix
 
     function resetWarriorPassword(e) {
         e.preventDefault()
@@ -35,7 +36,7 @@
         }
 
         if (noFormErrors) {
-            xfetch('/api/auth/reset-password', { body })
+            xfetch(`${pathPrefix}/api/auth/reset-password`, { body })
                 .then(function() {
                     eventTag('reset_password', 'engagement', 'success', () => {
                         router.route(appRoutes.login, true)

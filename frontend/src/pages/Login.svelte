@@ -19,9 +19,11 @@
     let warriorResetEmail = ''
     let forgotPassword = false
 
-    $: targetPage = battleId
+    const pathPrefix = appConfig.PathPrefix
+
+    $: targetPage = pathPrefix + (battleId
         ? `${appRoutes.battle}/${battleId}`
-        : appRoutes.battles
+        : appRoutes.battles)
 
     function authWarrior(e) {
         e.preventDefault()
@@ -30,7 +32,7 @@
             warriorPassword,
         }
 
-        xfetch('/api/auth', { body })
+        xfetch(`${pathPrefix}/api/auth`, { body })
             .then(res => res.json())
             .then(function(newWarrior) {
                 warrior.create({
@@ -66,7 +68,7 @@
             warriorEmail: warriorResetEmail,
         }
 
-        xfetch('/api/auth/forgot-password', { body })
+        xfetch(`${pathPrefix}/api/auth/forgot-password`, { body })
             .then(function() {
                 notifications.success(
                     $_('pages.login.sendResetSuccess', {

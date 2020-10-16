@@ -4,6 +4,8 @@
     import { _ } from '../i18n'
     import { appRoutes } from '../config'
     import { warrior } from '../stores'
+
+    const pathPrefix = appConfig.PathPrefix
 </script>
 
 <section class="bg-yellow-thunder text-gray-800">
@@ -50,7 +52,7 @@
                         hover:bg-transparent hover:text-gray-800 font-semibold
                         text-yellow-thunder py-4 px-10 border
                         hover:border-gray-800 border-transparent rounded"
-                        href="{$warrior.id ? appRoutes.battles : appRoutes.register}">
+                        href="${pathPrefix}{$warrior.id ? appRoutes.battles : appRoutes.register}">
                         {$_('actions.battle.create')}
                     </a>
                 </div>

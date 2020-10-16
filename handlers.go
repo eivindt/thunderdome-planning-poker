@@ -181,6 +181,7 @@ func (s *server) handleIndex() http.HandlerFunc {
 		AuthMethod         string
 		AppVersion         string
 		CookieName         string
+		PathPrefix         string
 	}
 	type UIConfig struct {
 		AnalyticsEnabled bool
@@ -222,6 +223,7 @@ func (s *server) handleIndex() http.HandlerFunc {
 		AuthMethod:         viper.GetString("auth.method"),
 		AppVersion:         s.config.Version,
 		CookieName:         s.config.FrontendCookieName,
+		PathPrefix:         viper.GetString("http.path_prefix"),
 	}
 
 	data := UIConfig{

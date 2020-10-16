@@ -13,6 +13,8 @@
     export let notifications
     export let eventTag
 
+    const pathPrefix = appConfig.PathPrefix
+
     let appStats = {
         unregisteredWarriorCount: 0,
         registeredWarriorCount: 0,
@@ -52,7 +54,7 @@
             })
     }
 
-    xfetch('/api/admin/stats')
+    xfetch(`${pathPrefix}/api/admin/stats`)
         .then(res => res.json())
         .then(function(result) {
             appStats = result
@@ -62,7 +64,7 @@
         })
 
     function getWarriors() {
-        xfetch('/api/admin/warriors')
+        xfetch(`${pathPrefix}/api/admin/warriors`)
             .then(res => res.json())
             .then(function(result) {
                 warriors = result

@@ -10,8 +10,9 @@
 
     let accountVerified = false
     let verficationError = false
+    const pathPrefix = appConfig.PathPrefix
 
-    xfetch('/api/auth/verify', { body: { verifyId } })
+    xfetch(`${pathPrefix}/api/auth/verify`, { body: { verifyId } })
         .then(function() {
             accountVerified = true
             eventTag('account_verify', 'engagement', 'success')

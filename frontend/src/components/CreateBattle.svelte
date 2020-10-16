@@ -15,6 +15,8 @@
 
     const allowedPointValues = appConfig.AllowedPointValues
 
+    const pathPrefix = appConfig.PathPrefix
+
     let points = appConfig.DefaultPointValues
     let battleName = ''
     let plans = []
@@ -69,7 +71,7 @@
             autoFinishVoting,
         }
 
-        xfetch('/api/battle', { body })
+        xfetch(`${pathPrefix}/api/battle`, { body })
             .then(res => res.json())
             .then(function(battle) {
                 eventTag('create_battle', 'engagement', 'success', () => {

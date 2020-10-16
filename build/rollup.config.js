@@ -53,6 +53,7 @@ export default {
             template: 'frontend/public/index.html',
             dest: 'dist',
             filename: 'index.html',
+            onlinePath: '/thunderdome/',
             absolute: true,
         }),
 

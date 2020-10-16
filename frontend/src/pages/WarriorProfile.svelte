@@ -16,6 +16,7 @@
     export let eventTag
 
     let warriorProfile = {}
+    const pathPrefix = appConfig.PathPrefix
 
     let updatePassword = false
     let warriorPassword1 = ''
@@ -60,7 +61,7 @@
         )
     }
 
-    xfetch(`/api/warrior/${$warrior.id}`)
+    xfetch(`${pathPrefix}/api/warrior/${$warrior.id}`)
         .then(res => res.json())
         .then(function(wp) {
             warriorProfile = wp
@@ -87,7 +88,7 @@
         }
 
         if (noFormErrors) {
-            xfetch(`/api/warrior/${$warrior.id}`, { body })
+            xfetch(`${pathPrefix}/api/warrior/${$warrior.id}`, { body })
                 .then(res => res.json())
                 .then(function(updatedWarrior) {
                     warrior.update({
@@ -131,7 +132,7 @@
         }
 
         if (noFormErrors) {
-            xfetch('/api/auth/update-password', { body })
+            xfetch(`${pathPrefix}/api/auth/update-password`, { body })
                 .then(function() {
                     notifications.success(
                         $_('pages.warriorProfile.passwordUpdated'),
